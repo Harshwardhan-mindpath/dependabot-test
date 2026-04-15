@@ -154,7 +154,7 @@ services:
  
   # https://mkyong.com/docker/docker-running-postgresql-as-a-container/
   db:
-    image: postgres:16.8
+    image: postgres:16.13
     healthcheck:
       test: ["CMD", "pg_isready", "-q", "-U", "postgres"]
       interval: 60s
