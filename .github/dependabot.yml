@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # Change to your ecosystem (e.g., docker, terraform)
+    directory: "/"
+    schedule:
+      interval: "cron"
+      # This expression runs at the start of every hour (00:00, 01:00, etc.)
+      cronjob: "0 * * * *"
+      timezone: "Asia/Kolkata"
+    
+    # Optional: Limit PRs to avoid "spamming" your repo every hour
+    open-pull-requests-limit: 10
