@@ -174,7 +174,7 @@ services:
  
   # https://docs.exalate.com/docs/scripts-how-to-bring-up-a-reverse-proxy-using-the-jwildernginx-proxy
   nginx-proxy:
-    image: jwilder/nginx-proxy:1.7
+    image: jwilder/nginx-proxy:1.10
     container_name: nginx-proxy
     depends_on:
       app:
