@@ -7,6 +7,12 @@ updates:
       # As we found earlier, "daily" is the minimum allowed native interval
       interval: "daily"
     
+    # Restrict updates to only minor and patch versions
+    allow:
+      - update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+
     # Optional: Group updates to reduce PR noise
     groups:
       docker-dependencies:
