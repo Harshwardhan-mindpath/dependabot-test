@@ -5,18 +5,15 @@ updates:
     schedule:
       interval: "daily"
     
-    groups:
-      # Group 1: Minor and Patch updates (The "Safe" PR)
-      minor-and-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
+    # 1. This handles the "Create PR for Minor/Patch" part
+    allow:
+      - update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
 
-      # Group 2: Major updates (The "Review Carefully" PR)
-      major-upgrades:
-        patterns:
-          - "*"
-        update-types:
-          - "major"
+    # 2. This "Silences" the Major versions (stops the PRs)
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+    
