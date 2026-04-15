@@ -154,7 +154,7 @@ services:
  
   # https://mkyong.com/docker/docker-running-postgresql-as-a-container/
   db:
-    image: postgres:16.8
+    image: postgres:18.3
     healthcheck:
       test: ["CMD", "pg_isready", "-q", "-U", "postgres"]
       interval: 60s
@@ -174,7 +174,7 @@ services:
  
   # https://docs.exalate.com/docs/scripts-how-to-bring-up-a-reverse-proxy-using-the-jwildernginx-proxy
   nginx-proxy:
-    image: jwilder/nginx-proxy:1.7
+    image: jwilder/nginx-proxy:1.10
     container_name: nginx-proxy
     depends_on:
       app:
@@ -241,7 +241,7 @@ services:
       - ./otel-collector-config.yaml:/etc/otel/config.yaml
  
   redis:
-    image: redis:7
+    image: redis:8
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 60s
@@ -255,7 +255,7 @@ services:
       - proxy
  
   openresty-redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     container_name: openresty-redis
     restart: unless-stopped
     ports:
