@@ -1,12 +1,14 @@
 version: 2
 updates:
-  - package-ecosystem: "npm" # Change to your ecosystem (e.g., docker, terraform)
-    directory: "/"
+  - package-ecosystem: "docker"
+    # Point to the specific directory where your docker-compose file lives
+    directory: "/infra/ec2-stage"
     schedule:
-      interval: "cron"
-      # This expression runs at the start of every hour (00:00, 01:00, etc.)
-      cronjob: "0 * * * *"
-      timezone: "Asia/Kolkata"
+      # As we found earlier, "daily" is the minimum allowed native interval
+      interval: "daily"
     
-    # Optional: Limit PRs to avoid "spamming" your repo every hour
-    open-pull-requests-limit: 10
+    # Optional: Group updates to reduce PR noise
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
